@@ -1,6 +1,7 @@
 ```
 # Build artifacts
 build/
+dist/
 
 # Dependencies
 node_modules/
@@ -9,6 +10,12 @@ node_modules/
 *.log
 *.tmp
 
-# Editors
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editor
 .vscode/
+.idea/
 ```
