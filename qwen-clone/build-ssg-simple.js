@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qwen AI - 通义千问</title>
-    <script type="module" crossorigin src="/assets/index.DmZNjmAD.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index.DjbfWgKu.css">
-  </head>
-  <body>
-    
+// 简化版SSG构建脚本，直接使用预定义的HTML内容
+import fs from 'fs';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// 读取构建后的index.html作为模板
+const templatePath = join(__dirname, 'dist', 'index.html');
+if (!fs.existsSync(templatePath)) {
+  console.log('请先运行 npm run build 构建项目');
+  process.exit(1);
+}
+
+const template = fs.readFileSync(templatePath, 'utf8');
+
+// 预渲染的HTML内容 - 这是我们应用的初始状态
+const staticContent = template.replace('<div id="root"></div>', `
     <div id="root">
       <div class="app-container">
         <header class="header">
@@ -82,6 +89,8 @@
         </div>
       </div>
     </div>
-  
-  </body>
-</html>
+  `);
+
+// 写入预渲染的首页
+fs.writeFileSync(join(__dirname, 'dist', 'index.html'), staticContent);
+console.log('SSG构建完成：静态首页已生成');

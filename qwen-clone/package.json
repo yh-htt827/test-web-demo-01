@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node build-ssg.js",
+    "build": "tsc && vite build && node build-ssg-simple.js",
     "preview": "vite preview"
   },
   "keywords": [],
