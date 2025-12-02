@@ -1,10 +1,15 @@
 ```
 # Build artifacts
-build/
 dist/
+build/
+*.js
 
 # Dependencies
 node_modules/
+package-lock.json
+
+# TypeScript
+*.d.ts
 
 # Logs and temp files
 *.log
@@ -15,7 +20,11 @@ node_modules/
 .env.local
 *.env.*
 
-# Editor
+# Editors
 .vscode/
 .idea/
+
+# OS
+.DS_Store
+Thumbs.db
 ```
